@@ -14,18 +14,37 @@ description: Skill dùng để trả lời các câu hỏi về kiến thức, s
 
 ## Quy trình làm việc
 
-- [ ] Bước 1: **Xác định thông tin cần tìm kiếm.** Phân tích câu hỏi của người dùng để biết họ đang hỏi về vị thánh nào hoặc chủ đề gì (sự tích, ý nghĩa độ mệnh, thơ tụng).
-- [ ] Bước 2: **Đọc tài liệu.** Sử dụng tool `grep_search` hoặc `view_file` để tìm kiếm và đọc thông tin từ file `resources/knowledge.md` nằm trong thư mục của skill này.
-- [ ] Bước 3: **Tổng hợp câu trả lời.** Dựa trên thông tin nguyên gốc trong tài liệu, trích xuất các ý chính để trả lời câu hỏi của người dùng một cách chính xác, đầy đủ và súc tích.
-- [ ] Bước 4: **Trình bày.** Format câu trả lời rõ ràng (sử dụng bullet points, in đậm chú thích) và đảm bảo văn phong trang trọng, tôn kính khi nhắc đến các bậc Thánh.
+- [ ] Bước 1: **Xác định vị thánh cần tìm.** Phân tích câu hỏi để biết người dùng hỏi về vị thánh nào hoặc chủ đề gì.
+- [ ] Bước 2: **Tìm file tương ứng.** Sử dụng `list_dir` trên thư mục `resources/` để xem danh sách 60 file, mỗi file là 1 vị thánh, đặt tên theo format `XX-ten-vi-thanh.md`.
+- [ ] Bước 3: **Đọc file.** Dùng `view_file` để đọc toàn bộ nội dung file `.md` của vị thánh đó. Mỗi file chỉ ~200–300 dòng, đọc trọn vẹn trong 1 lần.
+- [ ] Bước 4: **Tổng hợp câu trả lời.** Trích xuất các ý chính phù hợp câu hỏi, trình bày rõ ràng, tôn kính.
 
 ## Hướng dẫn chi tiết
 
-- **Nguồn kiến thức duy nhất:** Bạn CHỈ ĐƯỢC PHÉP sử dụng thông tin từ file `.agent/skills/answering-patron-saints/resources/knowledge.md` để trả lời các câu hỏi về 60 vị thánh độ mệnh. Tuyệt đối không tự bịa thông tin hoặc lấy từ các nguồn không chính thống khác.
-- **Cách tìm kiếm:** File `knowledge.md` chứa thông tin của cả 60 vị thánh, được phân chia bằng các header `## [Số thứ tự]. [Tên vị thánh]`. Hãy dùng công cụ tìm kiếm (`grep_search`) theo tên vị thánh để tìm đoạn văn bản có chứa thông tin đó, sau đó dùng lệnh `view_file` ở các dòng xung quanh để đọc toàn bộ phần cần thiết.
-- **Cấu trúc thông tin của mỗi vị thánh:** Thông thường mỗi vị thánh sẽ có các phần: Tiêu đề, Xuất thân, Quá trình chứng đạo / hạnh nguyện, Ý nghĩa độ mệnh, và Thơ tụng. Hãy khoanh vùng thông tin cần thiết tùy theo câu hỏi của người dùng.
-- **Giữ nguyên văn những nội dung quan trọng:** Đối với **Thơ tụng** hoặc **Ý nghĩa độ mệnh**, hãy trích dẫn nguyên văn để giữ đúng ý nghĩa tâm linh và sự tôn kính.
+### Nguồn kiến thức
+- **CHỈ ĐƯỢC PHÉP** sử dụng thông tin từ các file `.md` trong thư mục `resources/`. Tuyệt đối không tự bịa thông tin.
+
+### Cấu trúc file
+Mỗi file `.md` chứa thông tin của **1 vị thánh**, bao gồm các phần:
+- **Tiêu đề**: Tên vị thánh, danh hiệu, tên Pali
+- **Xuất thân**: Gia thế, quê hương
+- **Quá trình xuất gia / chứng đạo**: Câu chuyện tu hành
+- **Công hạnh / đức hạnh nổi bật**: Những hành động và phẩm chất đặc biệt
+- **Ý nghĩa độ mệnh**: Lợi ích khi thờ kính vị thánh này
+- **Thơ tụng**: Bài thơ tôn vinh (trích nguyên văn khi người dùng hỏi)
+
+### Danh sách 60 vị thánh
+Các file được đánh số từ `01` đến `60`, bao gồm:
+- **01–42**: Các vị Tôn giả (nam)
+- **43–54**: Các vị Tôn giả Ni (nữ)
+- **55–59**: Các vị Bồ Tát
+- **60**: Thiên Chủ Đế Thích
+
+### Nguyên tắc trả lời
+- **Giữ nguyên văn** các phần: Thơ tụng, Ý nghĩa độ mệnh, lời Phật dạy (trích dẫn).
+- **Văn phong trang trọng, tôn kính** khi nhắc đến các bậc Thánh.
+- Nếu người dùng hỏi chung (ví dụ: "ai là đệ nhất thần thông?"), hãy tìm trong nhiều file nếu cần.
 
 ## Tài nguyên liên quan
 
-- [resources/knowledge.md]: Chứa toàn bộ nội dung chi tiết về 60 vị thánh độ mệnh được trích xuất từ các file Word gốc do người dùng cung cấp.
+- [resources/]: 60 file Markdown, mỗi file chứa đầy đủ thông tin về 1 vị thánh độ mệnh.
